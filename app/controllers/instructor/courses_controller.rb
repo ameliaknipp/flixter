@@ -19,11 +19,13 @@ class Instructor::CoursesController < ApplicationController
     @course = Course.find(params[:id])
   end
 
-  def show
 
-  end
 
   private
+
+  def photo_params
+    params.require(:course).permit(:image)
+  end
 
     def require_authorized_for_current_course
     if current_course.user != current_user
